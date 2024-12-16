@@ -21,3 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 要素を取得
+    const advancedAnswerInput = document.getElementById("advanced-answer");
+    const advancedSubmitButton = document.getElementById("submit-advanced-answer");
+    const advancedResultMessage = document.getElementById("advanced-result-message");
+
+    // 正解例を設定（簡単な例として泥棒を分散させるアイデアを正解とします）
+    const correctAdvancedAnswers = [
+        "泥棒をランダムに割り振る",
+        "どの家も均等に襲わせる",
+        "泥棒の行動を分散させる",
+    ];
+
+    // ボタンがクリックされたときの処理
+    advancedSubmitButton.addEventListener("click", () => {
+        const userAdvancedAnswer = advancedAnswerInput.value.trim();
+
+        // 答えをチェック（正解リストに含まれるか）
+        if (correctAdvancedAnswers.some((correct) => userAdvancedAnswer.includes(correct))) {
+            advancedResultMessage.textContent = "素晴らしい！正解のアイデアです！🎉";
+            advancedResultMessage.style.color = "green";
+        } else {
+            advancedResultMessage.textContent = "惜しいです！もっと工夫して考えてみてください。";
+            advancedResultMessage.style.color = "red";
+        }
+    });
+});
