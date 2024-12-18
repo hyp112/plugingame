@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 答えをチェック（正解リストに含まれるか）
         if (correctAnswers.some((correct) => userAnswer.includes(correct))) {
-            ResultMessage.textContent = "素晴らしい！正解のアイデアです！🎉";
+            ResultMessage.textContent = "素晴らしい！正解です！🎉";
             ResultMessage.style.color = "green";
         } else {
             ResultMessage.textContent = "惜しいです！もっと工夫して考えてみてください。";
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 答えをチェック（正解リストに含まれるか）
         if (correctAnswers.some((correct) => userAnswer.includes(correct))) {
-            ResultMessage.textContent = "素晴らしい！正解のアイデアです！🎉";
+            ResultMessage.textContent = "素晴らしい！正解です！🎉";
             ResultMessage.style.color = "green";
         } else {
             ResultMessage.textContent = "惜しいです！もっと工夫して考えてみてください。";
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
             googleFormContainer.style.display = "block";
         } else {
             // 不正解時のメッセージ
-            quizResultElement.textContent = "残念、不正解です。もう一度挑戦してください！";
+            quizResultElement.textContent = "すべての問題にチャレンジ！";
             quizResultElement.style.color = "red";
         }
     });

@@ -81,6 +81,7 @@
                 <textarea id="advanced-answer" placeholder="考えを書いてください"></textarea>
                 <button id="submit-advanced-answer">送信</button>
                 <p id="advanced-result-message"></p>
+                <p id="result-message4"></p>
             </div>
         </section>
         <script src="script.js"></script>
@@ -90,19 +91,32 @@
                 <h2>問題4</h2>
                 <p>モザイク<p>
                 <img src="quiz/スライド2.PNG" alt="kari">
-                <input type="text" id="answer-input" placeholder="答えを入力してください">
-                <button id="submit-answer">送信</button>
+                <input type="text" id="answer4-input" placeholder="答えを入力してください">
+                <button id="submit4-answer">送信</button>
             </div>
         </section>
         <script src="script.js"></script>
 
-        <section id="get-form">
+        <section id="quiz-section">
             <div class="quiz">
-                <h2>回答フォーム</h2>
-                <p>以下のフォームから回答を送信してください。</p>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7adaLHgoD-63G63tVt3E9RcQZXvmE0vvWrU5AWEj1EH7KoQ/viewform?usp=dialog"></iframe>
+                <h2>答え合わせ</h2>
+                <input type="text" id="quiz-answer" placeholder="Keyを入力してください。">
+                <button id="quiz-submit">送信</button>
+                <p id="quiz-result"></p>
             </div>
         </section>
+        
+        <!-- Google Formを埋め込むセクション -->
+        <div id="google-form-container" style="display: none; margin-top: 20px;">
+            <h3>おめでとうございます！店員までお声掛けください！</h3>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7adaLHgoD-63G63tVt3E9RcQZXvmE0vvWrU5AWEj1EH7KoQ/viewform?usp=dialog"
+                    width="100%" height="600px" frameborder="0">Loading…</iframe>
+        </div>
+        
+        <script src="script.js"></script>
+        
     </main>
 </body>
 </html>
+
+
