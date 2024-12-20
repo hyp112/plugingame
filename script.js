@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const quizSections = [
-        { id: "answer1-input", submitId: "submit-answer1", resultId: "result-message1", correct: "I" },
+        { id: "answer1-input", submitId: "submit-answer1", resultId: "result-message1", correct: ["christmas", "Christmas"] },
         { id: "answer2-input", submitId: "submit-answer2", resultId: "result-message2", correct: ["ノライヌ", "のらいぬ", "野良犬"] },
         { id: "answer3-input", submitId: "submit-answer3", resultId: "result-message3", correct: "10367" },
-        { id: "answer4-input", submitId: "submit-answer4", resultId: "result-message4", correct: ["ユーロ", "euro", "EURO"] },
+        { id: "answer4-input", submitId: "submit-answer4", resultId: "result-message4", correct: ["さんたくろーす", "サンタクロース", "Santa Cluse", "santacluse"] },
+        { id: "answer5-input", submitId: "submit-answer5", resultId: "result-message5", correct: ["だんさー", "ダンサー", "dancer", "Dancer"] },
+        { id: "answer6-input", submitId: "submit-answer6", resultId: "result-message6", correct: ["シャツ", "しゃつ", "shirt", "SHIRT"] },
     ];
 
     const googleFormContainer = document.getElementById("google-form-container");
