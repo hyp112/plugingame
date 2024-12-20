@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     hints.forEach(hint => {
-        const hintButton = document.getElementById(hint.buttonId);
-        const hintCard = document.getElementById(hint.cardId);
+        const hintButton = document.getElementById(hints.buttonId);
+        const hintCard = document.getElementById(hints.cardId);
 
         hintButton.addEventListener("click", () => {
             if (hintCard.style.display === "none") {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 hintButton.textContent = "ヒントを隠す";
             } else {
                 hintCard.style.display = "none";
-                hintButton.textContent = "ヒントを見る";
+                hintButton.textContent = "?";
             }
         });
     });
@@ -102,4 +102,23 @@ document.addEventListener("DOMContentLoaded", () => {
         omakeQuiz.style.display = "block";
         omakeButton.style.display = "none"; // ボタンを非表示にする
     });
+
+    //おまけ問題の回答を表示
+    const answerButtons = document.querySelectorAll(".answer-button");
+
+    answerButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const isCorrect = button.getAttribute("data-correct") === "true";
+            const resultMessage = button.parentElement.parentElement.querySelector(".result-message");
+
+            if (isCorrect) {
+                resultMessage.textContent = "正解です！🎉";
+                resultMessage.style.color = "green";
+            } else {
+                resultMessage.textContent = "残念、不正解です。";
+                resultMessage.style.color = "red";
+            }
+        });
+    });
 });
+
