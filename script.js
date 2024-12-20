@@ -78,7 +78,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//おまけ問題
+document.addEventListener("DOMContentLoaded", () => {
+    // 3択問題の回答ボタンにイベントを追加
+    const answerButtons = document.querySelectorAll(".answer-button");
 
+    answerButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const isCorrect = button.getAttribute("data-correct") === "true";
+            const resultMessage = button.parentElement.parentElement.querySelector(".result-message");
+
+            if (isCorrect) {
+                resultMessage.textContent = "正解です！🎉";
+                resultMessage.style.color = "green";
+            } else {
+                resultMessage.textContent = "残念、不正解です。";
+                resultMessage.style.color = "red";
+            }
+        });
+    });
+
+    const omake = [
+        { buttonId: "omake-button", quizId: "omake-quiz" },
+    ];
+    omake.forEach(omake => {
+        const omakeButton = document.getElementById(omake.buttonId);
+        const omakeQuiz = document.getElementById(omake.quizId);
+
+        omakeButton.addEventListener("click", () => {
+            omakeQuiz.style.display === "block"
+        });
+    });
+});
+
+//ヒントカード
 document.addEventListener("DOMContentLoaded", () => {
     const hints = [
         { buttonId: "hint-button1", cardId: "hint-card1" },
@@ -95,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 hintButton.textContent = "ヒントを隠す";
             } else {
                 hintCard.style.display = "none";
-                hintButton.textContent = "ヒントを見る";
+                hintButton.textContent = "?";
             }
         });
     });
