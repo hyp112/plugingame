@@ -9,18 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const googleFormContainer = document.getElementById("google-form-container");
-    const body = document.body; // 背景変更用
+    const omakeButton = document.getElementById("omake-button");
+    const omakeQuiz = document.getElementById("omake-quiz");
+    const body = document.body;
 
     // 各セクションの正解状態を管理
     const correctStates = new Array(quizSections.length).fill(false);
 
     // 全問正解時の特別な演出
     const triggerSpecialEffects = () => {
-        // 背景色をゴールドに変更
         body.style.transition = "background-color 1s";
         body.style.backgroundColor = "#FFD700";
 
-        // 特別なメッセージを表示
         const specialMessage = document.createElement("div");
         specialMessage.textContent = "おめでとうございます！全問正解です！🎉";
         specialMessage.style.position = "fixed";
@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         specialMessage.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
         document.body.appendChild(specialMessage);
 
-        // メッセージを5秒後に消す
         setTimeout(() => {
             specialMessage.remove();
         }, 5000);
@@ -47,9 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (correctStates.every(state => state)) {
             triggerSpecialEffects();
             googleFormContainer.style.display = "block";
+            omakeButton.style.display = "block"; // おまけボタンを表示
         }
     };
 
+    // 各クイズの回答チェック
     quizSections.forEach((quiz, index) => {
         const answerInput = document.getElementById(quiz.id);
         const submitButton = document.getElementById(quiz.submitId);
@@ -57,8 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         submitButton.addEventListener("click", () => {
             const userAnswer = answerInput.value.trim();
-
-            // 答えをチェック（配列か文字列で異なる処理）
             const isCorrect = Array.isArray(quiz.correct)
                 ? quiz.correct.some(correct => userAnswer.includes(correct))
                 : userAnswer === quiz.correct;
@@ -66,53 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isCorrect) {
                 resultMessage.textContent = "正解です！おめでとうございます🎉";
                 resultMessage.style.color = "green";
-                correctStates[index] = true; // 正解状態を更新
+                correctStates[index] = true;
             } else {
                 resultMessage.textContent = "残念！もう一度挑戦してください！";
                 resultMessage.style.color = "red";
-                correctStates[index] = false; // 不正解状態を更新
+                correctStates[index] = false;
             }
 
             checkAllCorrect();
         });
     });
-});
 
-//おまけ問題
-document.addEventListener("DOMContentLoaded", () => {
-    // 3択問題の回答ボタンにイベントを追加
-    const answerButtons = document.querySelectorAll(".answer-button");
-
-    answerButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const isCorrect = button.getAttribute("data-correct") === "true";
-            const resultMessage = button.parentElement.parentElement.querySelector(".result-message");
-
-            if (isCorrect) {
-                resultMessage.textContent = "正解です！🎉";
-                resultMessage.style.color = "green";
-            } else {
-                resultMessage.textContent = "残念、不正解です。";
-                resultMessage.style.color = "red";
-            }
-        });
-    });
-
-    const omake = [
-        { buttonId: "omake-button", quizId: "omake-quiz" },
-    ];
-    omake.forEach(omake => {
-        const omakeButton = document.getElementById(omake.buttonId);
-        const omakeQuiz = document.getElementById(omake.quizId);
-
-        omakeButton.addEventListener("click", () => {
-            omakeQuiz.style.display === "block"
-        });
-    });
-});
-
-//ヒントカード
-document.addEventListener("DOMContentLoaded", () => {
+    // ヒントカードのロジック
     const hints = [
         { buttonId: "hint-button1", cardId: "hint-card1" },
         { buttonId: "hint-button2", cardId: "hint-card2" },
@@ -128,8 +92,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 hintButton.textContent = "ヒントを隠す";
             } else {
                 hintCard.style.display = "none";
-                hintButton.textContent = "?";
+                hintButton.textContent = "ヒントを見る";
             }
         });
+    });
+
+    // おまけボタンでおまけ問題を表示
+    omakeButton.addEventListener("click", () => {
+        omakeQuiz.style.display = "block";
+        omakeButton.style.display = "none"; // ボタンを非表示にする
     });
 });
