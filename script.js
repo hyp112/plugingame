@@ -82,9 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
         { buttonId: "hint-button2", cardId: "hint-card2" },
     ];
 
-    hints.forEach(hints => {
-        const hintButton = document.getElementById(hints.buttonId);
-        const hintCard = document.getElementById(hints.cardId);
+    hints.forEach(hint => {
+        const hintButton = document.getElementById(hint.buttonId);
+        const hintCard = document.getElementById(hint.cardId);
 
         hintButton.addEventListener("click", () => {
             if (hintCard.style.display === "none") {
