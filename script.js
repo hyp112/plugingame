@@ -77,3 +77,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const hints = [
+        { buttonId: "hint-button1", cardId: "hint-card1" },
+        { buttonId: "hint-button2", cardId: "hint-card2" },
+    ];
+
+    hints.forEach(hint => {
+        const hintButton = document.getElementById(hint.buttonId);
+        const hintCard = document.getElementById(hint.cardId);
+
+        hintButton.addEventListener("click", () => {
+            if (hintCard.style.display === "none") {
+                hintCard.style.display = "block";
+                hintButton.textContent = "ヒントを隠す";
+            } else {
+                hintCard.style.display = "none";
+                hintButton.textContent = "ヒントを見る";
+            }
+        });
+    });
+});
