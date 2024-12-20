@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { buttonId: "hint-button2", cardId: "hint-card2" },
     ];
 
-    hints.forEach(hint => {
+    hints.forEach(hints => {
         const hintButton = document.getElementById(hints.buttonId);
         const hintCard = document.getElementById(hints.cardId);
 
